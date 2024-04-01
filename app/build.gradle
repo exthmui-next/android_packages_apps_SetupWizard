@@ -4,12 +4,12 @@ plugins {
 
 android {
     namespace 'net.hearnsoft.setupwizard'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "net.hearnsoft.setupwizard"
         minSdk 31
-        targetSdk 33
+        targetSdk 34
         versionCode 9999
         versionName "13"
 
