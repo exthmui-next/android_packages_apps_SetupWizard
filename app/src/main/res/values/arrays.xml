@@ -34,14 +34,20 @@
     </string-array>
 
     <string-array name="random_text">
-        <item>地符「不譲土壌の剣」</item>
-        <item>非想「非想非非想の剣」</item>
-        <item>天符「天道是非の剣」</item>
-        <item>地震「先憂後楽の剣」</item>
-        <item>気符「天啓気象の剣」</item>
-        <item>要石「天地開闢プレス」</item>
-        <item>気符「無念無想の境地」</item>
-        <item>「全人類の緋想天」</item>
+        <item>核熱「ニュークリアフュージョン」</item>
+        <item>核熱「ニュークリアエクスカーション」</item>
+        <item>核熱「核反応制御不能」</item>
+        <item>爆符「プチフレア」</item>
+        <item>爆符「メガフレア」</item>
+        <item>爆符「ギガフレア」</item>
+        <item>爆符「ぺタフレア」</item>
+        <item>焔星「フィクストスター」</item>
+        <item>焔星「プラネタリーレボリューション」</item>
+        <item>焔星「十凶星」</item>
+        <item>「地獄極楽メルトダウン」</item>
+        <item>「ヘルズトカマク」</item>
+        <item>「地獄の人工太陽」</item>
+        <item>「サブタレイニアンサン」</item>
     </string-array>
 
 </resources>

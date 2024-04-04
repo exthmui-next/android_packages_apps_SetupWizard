@@ -24,6 +24,8 @@ public class IntroFragment extends Fragment {
     private FragmentIntroViewBinding binding;
     private Random random;
     private Timer timer;
+    private int[] intro_imgs = {R.drawable.main_intro, R.drawable.main_intro_1,
+                R.drawable.main_intro_2,R.drawable.main_intro_3};
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,6 +46,11 @@ public class IntroFragment extends Fragment {
             Intent intent = new Intent();
             intent.setAction("android.settings.LOCALE_SETTINGS");
             startActivity(intent);
+        });
+        binding.introImages.setOnClickListener(v -> {
+            int random = genRandomInt(intro_imgs.length);
+            int intro_image = intro_imgs[random];
+            binding.introImages.setImageResource(intro_image);
         });
         binding.welcomeAccessibility.setOnClickListener(new AccessibilityClick());
         binding.welcomeEmergencyCall.setOnClickListener(new EmergencyDialerClick());
@@ -86,6 +93,11 @@ public class IntroFragment extends Fragment {
                 });
             }
         },0,5000);
+    }
+
+    private int genRandomInt(int max){
+        Random random = new Random();
+        return random.nextInt(max - 1);
     }
 
 }
