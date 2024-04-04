@@ -42,7 +42,7 @@ public class DataSmsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = binding.getRoot();
         binding.defaultCallSummary.setText(utils.getSummary(manager.getDefaultVoiceSubscriptionInfo()));
-        binding.defaultSmsSummary.setText(utils.getSummary(manager.getDefaultSmsSubscriptionInfo()));
+        binding.defaultSmsSummary.setText(utils.getSummary(utils.getDefaultSmsSubscriptionInfo()));
         binding.defaultDataSummary.setText(utils.getSummary(manager.getDefaultDataSubscriptionInfo()));
         binding.defaultCall.setOnClickListener(v -> { showSubscriptionDialogs(subIds,0); });
         binding.defaultSms.setOnClickListener(v -> { showSubscriptionDialogs(subIds,1); });
@@ -110,7 +110,7 @@ public class DataSmsFragment extends Fragment {
             binding.defaultCallSummary.setText(utils.getSummary(manager.getDefaultVoiceSubscriptionInfo()));
         } else if (options == 1){
             manager.setDefaultSmsSubId(subId);
-            binding.defaultSmsSummary.setText(utils.getSummary(manager.getDefaultSmsSubscriptionInfo()));
+            binding.defaultSmsSummary.setText(utils.getSummary(utils.getDefaultSmsSubscriptionInfo()));
         } else if (options == 2){
             utils.setDefaultDatSubId(manager,subId);
             binding.defaultDataSummary.setText(utils.getSummary(manager.getDefaultDataSubscriptionInfo()));

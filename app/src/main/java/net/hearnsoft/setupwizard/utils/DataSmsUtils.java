@@ -26,11 +26,13 @@ public class DataSmsUtils {
     private TelephonyManager mTeleManager;
     protected TelecomManager mTelecomManager;
     protected ConnectivityManager mConnectivityManager;
+    protected SubscriptionManager mSubscriptionManager;
 
     public DataSmsUtils(Context context) {
         mContext = context;
         mTeleManager = (TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE);
         mConnectivityManager = (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
+        mSubscriptionManager = (SubscriptionManager) mContext.getSystemService(SubscriptionManager.class);
     }
 
     @SuppressLint("MissingPermission")
@@ -64,6 +66,13 @@ public class DataSmsUtils {
                 return "";
             }
         }
+    }
+
+    @SuppressLint("MissingPermission")
+    public SubscriptionInfo getDefaultSmsSubscriptionInfo() {
+        return mSubscriptionManager.getActiveSubscriptionInfo(
+                mSubscriptionManager.getDefaultSmsSubscriptionId()
+        );
     }
 
     /**
