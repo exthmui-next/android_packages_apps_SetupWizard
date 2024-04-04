@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
@@ -26,6 +27,9 @@ public final class FragmentIntroViewBinding implements ViewBinding {
   public final LinearLayout banner;
 
   @NonNull
+  public final ImageView introImages;
+
+  @NonNull
   public final MaterialButton welcomeAccessibility;
 
   @NonNull
@@ -41,11 +45,12 @@ public final class FragmentIntroViewBinding implements ViewBinding {
   public final SuperTextView welcomeText;
 
   private FragmentIntroViewBinding(@NonNull FrameLayout rootView, @NonNull LinearLayout banner,
-      @NonNull MaterialButton welcomeAccessibility, @NonNull MaterialButton welcomeEmergencyCall,
-      @NonNull MaterialButton welcomeLanguage, @NonNull RelativeLayout welcomeLayout,
-      @NonNull SuperTextView welcomeText) {
+      @NonNull ImageView introImages, @NonNull MaterialButton welcomeAccessibility,
+      @NonNull MaterialButton welcomeEmergencyCall, @NonNull MaterialButton welcomeLanguage,
+      @NonNull RelativeLayout welcomeLayout, @NonNull SuperTextView welcomeText) {
     this.rootView = rootView;
     this.banner = banner;
+    this.introImages = introImages;
     this.welcomeAccessibility = welcomeAccessibility;
     this.welcomeEmergencyCall = welcomeEmergencyCall;
     this.welcomeLanguage = welcomeLanguage;
@@ -86,6 +91,12 @@ public final class FragmentIntroViewBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.intro_images;
+      ImageView introImages = ViewBindings.findChildViewById(rootView, id);
+      if (introImages == null) {
+        break missingId;
+      }
+
       id = R.id.welcome_accessibility;
       MaterialButton welcomeAccessibility = ViewBindings.findChildViewById(rootView, id);
       if (welcomeAccessibility == null) {
@@ -116,8 +127,8 @@ public final class FragmentIntroViewBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentIntroViewBinding((FrameLayout) rootView, banner, welcomeAccessibility,
-          welcomeEmergencyCall, welcomeLanguage, welcomeLayout, welcomeText);
+      return new FragmentIntroViewBinding((FrameLayout) rootView, banner, introImages,
+          welcomeAccessibility, welcomeEmergencyCall, welcomeLanguage, welcomeLayout, welcomeText);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
