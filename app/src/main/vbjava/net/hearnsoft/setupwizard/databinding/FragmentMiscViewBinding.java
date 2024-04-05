@@ -5,11 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
-import com.google.android.material.card.MaterialCardView;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -20,25 +20,21 @@ public final class FragmentMiscViewBinding implements ViewBinding {
   private final FrameLayout rootView;
 
   @NonNull
-  public final MaterialCardView displaySettings;
+  public final LinearLayout backupSettings;
 
   @NonNull
-  public final MaterialCardView lockSettings;
+  public final LinearLayout googleSettings;
 
   @NonNull
-  public final MaterialCardView multiuserSettings;
-
-  @NonNull
-  public final MaterialCardView soundSettings;
+  public final LinearLayout lockSettings;
 
   private FragmentMiscViewBinding(@NonNull FrameLayout rootView,
-      @NonNull MaterialCardView displaySettings, @NonNull MaterialCardView lockSettings,
-      @NonNull MaterialCardView multiuserSettings, @NonNull MaterialCardView soundSettings) {
+      @NonNull LinearLayout backupSettings, @NonNull LinearLayout googleSettings,
+      @NonNull LinearLayout lockSettings) {
     this.rootView = rootView;
-    this.displaySettings = displaySettings;
+    this.backupSettings = backupSettings;
+    this.googleSettings = googleSettings;
     this.lockSettings = lockSettings;
-    this.multiuserSettings = multiuserSettings;
-    this.soundSettings = soundSettings;
   }
 
   @Override
@@ -68,32 +64,26 @@ public final class FragmentMiscViewBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.display_settings;
-      MaterialCardView displaySettings = ViewBindings.findChildViewById(rootView, id);
-      if (displaySettings == null) {
+      id = R.id.backup_settings;
+      LinearLayout backupSettings = ViewBindings.findChildViewById(rootView, id);
+      if (backupSettings == null) {
+        break missingId;
+      }
+
+      id = R.id.google_settings;
+      LinearLayout googleSettings = ViewBindings.findChildViewById(rootView, id);
+      if (googleSettings == null) {
         break missingId;
       }
 
       id = R.id.lock_settings;
-      MaterialCardView lockSettings = ViewBindings.findChildViewById(rootView, id);
+      LinearLayout lockSettings = ViewBindings.findChildViewById(rootView, id);
       if (lockSettings == null) {
         break missingId;
       }
 
-      id = R.id.multiuser_settings;
-      MaterialCardView multiuserSettings = ViewBindings.findChildViewById(rootView, id);
-      if (multiuserSettings == null) {
-        break missingId;
-      }
-
-      id = R.id.sound_settings;
-      MaterialCardView soundSettings = ViewBindings.findChildViewById(rootView, id);
-      if (soundSettings == null) {
-        break missingId;
-      }
-
-      return new FragmentMiscViewBinding((FrameLayout) rootView, displaySettings, lockSettings,
-          multiuserSettings, soundSettings);
+      return new FragmentMiscViewBinding((FrameLayout) rootView, backupSettings, googleSettings,
+          lockSettings);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
