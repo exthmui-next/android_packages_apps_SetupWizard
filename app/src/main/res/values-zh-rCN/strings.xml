@@ -48,11 +48,10 @@
     <!-- Misc Settings -->
     <string name="misc_settings_title">还有其他设置要操作吗？</string>
     <string name="screen_lock_title">屏幕锁定</string>
-    <string name="sound_title">提示音与震动</string>
-    <string name="multiuser_title">多用户设置</string>
-    <string name="display_title">显示设置</string>
-    <string name="multiuser_not_support">无法使用多用户</string>
-    <string name="multiuser_not_support_summary">当前系统已禁用多用户功能。</string>
+    <string name="gms_not_support">无法启动 Google Play 服务</string>
+    <string name="gms_not_support_summary">当前系统未预装 Google Play 服务或当前不可用。</string>
+    <string name="backup_restore">备份与恢复</string>
+    <string name="google_settings">Google 账户与设置</string>
 
     <!-- Finish setup -->
     <string name="finish_setup_title">设置已完成！</string>

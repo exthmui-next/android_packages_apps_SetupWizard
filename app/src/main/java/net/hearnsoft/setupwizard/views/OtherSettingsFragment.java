@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,52 +25,66 @@ import java.util.List;
 
 public class OtherSettingsFragment extends Fragment {
 
-    private static final String LAUNCHED_SETTINGS = "app_launched_settings";
     private FragmentMiscViewBinding binding;
-    private Intent intent;
+    private String mGmsSettingsActivityName;
+    private String mGmsSettingsPkgName;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = FragmentMiscViewBinding.inflate(getLayoutInflater());
-        intent = new Intent();
+
+        mGmsSettingsPkgName = getResources().getString(R.string.gms_package_name);
+        mGmsSettingsActivityName = getResources().getString(R.string.google_settings_activity);
     }
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         View view = binding.getRoot();
         binding.lockSettings.setOnClickListener(v -> {
+            Intent intent = new Intent();
             intent.setAction("android.app.action.SET_NEW_PASSWORD");
             startActivity(intent);
         });
-        binding.soundSettings.setOnClickListener(v -> {
-            intent.setAction("android.settings.SOUND_SETTINGS");
-            startActivity(intent);
+        binding.backupSettings.setOnClickListener(v -> {
+            Intent backupIntent = new Intent();
+            backupIntent.setClassName("com.android.settings",
+                    "com.android.settings.backup.UserBackupSettingsActivity");
+            startActivity(backupIntent);
         });
-        binding.multiuserSettings.setOnClickListener(v -> {
-            if (checkIfSupportMultiUser()){
-                intent.setAction("android.settings.USER_SETTINGS");
-                startActivity(intent);
+        binding.googleSettings.setOnClickListener(v -> {
+            if (areGmsAvailable()) {
+                Intent gmsIntent = new Intent().setComponent(getGmsComponentName());
+                startActivity(gmsIntent);
             } else {
                 new MaterialAlertDialogBuilder(requireContext())
-                        .setTitle(R.string.multiuser_not_support)
-                        .setMessage(R.string.multiuser_not_support_summary)
+                        .setTitle(R.string.gms_not_support)
+                        .setMessage(R.string.gms_not_support_summary)
                         .setPositiveButton(android.R.string.ok, (dialog, which) -> dialog.dismiss())
                         .show();
             }
         });
-        binding.displaySettings.setOnClickListener(v -> {
-            intent.setAction("android.settings.DISPLAY_SETTINGS");
-            startActivity(intent);
-        });
         return view;
     }
 
-    private boolean checkIfSupportMultiUser(){
-        Resources sysRes = Resources.getSystem();
-        return sysRes.getBoolean(sysRes.getIdentifier("config_enableMultiUserUI", "bool", "android"));
+    /** Returns whether Styles & Wallpaper is enabled and available. */
+    public boolean areGmsAvailable() {
+        return !TextUtils.isEmpty(mGmsSettingsActivityName)
+                && canResolveGoogleComponent(mGmsSettingsActivityName);
     }
 
+    public ComponentName getGmsComponentName() {
+        return new ComponentName(mGmsSettingsPkgName, mGmsSettingsActivityName);
+    }
+
+    private boolean canResolveGoogleComponent(String className) {
+        final ComponentName componentName = new ComponentName(mGmsSettingsPkgName, className);
+        final PackageManager pm = requireContext().getPackageManager();
+        final Intent intent = new Intent().setComponent(componentName);
+        final List<ResolveInfo> resolveInfos = pm.queryIntentActivities(intent, 0 /* flags */);
+        return resolveInfos != null && !resolveInfos.isEmpty();
+    }
 
 }

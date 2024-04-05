@@ -20,143 +20,123 @@
             android:textSize="24sp"
             android:text="@string/misc_settings_title" />
 
-        <GridLayout
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_margin="16dp"
-            android:columnCount="2"
-            android:rowCount="2">
+            android:padding="8dp"
+            android:orientation="vertical">
 
-            <!-- 锁屏设置 -->
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="120dp"
-                android:layout_height="80dp"
-                android:layout_margin="@dimen/nav_btn_margin"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:background="?attr/selectableItemBackground"
-                android:id="@+id/lock_settings"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="6dp">
+                android:id="@+id/lock_settings">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="16dp"
+                    android:src="@drawable/ic_lock" />
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/nav_btn_margin"
-                        android:layout_gravity="center_horizontal"
-                        android:src="@drawable/ic_lock" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/TextAppearance.AppCompat.Title"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="16dp"
+                    android:text="@string/screen_lock_title" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="@string/screen_lock_title" />
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
 
-                </LinearLayout>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="16dp"
+                    android:src="@drawable/ic_right" />
 
-            </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
 
-            <!-- 提示音和震动设置 -->
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="120dp"
-                android:layout_height="80dp"
-                android:layout_margin="@dimen/nav_btn_margin"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:background="?attr/selectableItemBackground"
-                android:id="@+id/sound_settings"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="6dp">
+                android:id="@+id/backup_settings">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="16dp"
+                    android:src="@drawable/ic_backup_restore" />
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/nav_btn_margin"
-                        android:layout_gravity="center_horizontal"
-                        android:src="@drawable/ic_sound" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/TextAppearance.AppCompat.Title"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="16dp"
+                    android:text="@string/backup_restore" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="@string/sound_title" />
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
 
-                </LinearLayout>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="16dp"
+                    android:src="@drawable/ic_right" />
 
-            </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
 
-            <!-- 指纹设置 -->
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="120dp"
-                android:layout_height="80dp"
-                android:layout_margin="@dimen/nav_btn_margin"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:background="?attr/selectableItemBackground"
-                android:id="@+id/multiuser_settings"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="6dp">
+                android:id="@+id/google_settings">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="16dp"
+                    android:src="@drawable/ic_google" />
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/nav_btn_margin"
-                        android:layout_gravity="center_horizontal"
-                        android:src="@drawable/ic_user" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/TextAppearance.AppCompat.Title"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="16dp"
+                    android:text="@string/google_settings" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="@string/multiuser_title" />
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
 
-                </LinearLayout>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="16dp"
+                    android:src="@drawable/ic_right" />
 
-            </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
 
-            <!-- 显示设置 -->
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="120dp"
-                android:layout_height="80dp"
-                android:layout_margin="@dimen/nav_btn_margin"
-                android:background="?attr/selectableItemBackground"
-                android:id="@+id/display_settings"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="6dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/nav_btn_margin"
-                        android:layout_gravity="center_horizontal"
-                        android:src="@drawable/ic_display" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="@string/display_title" />
-
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-        </GridLayout>
+        </LinearLayout>
 
 
     </LinearLayout>

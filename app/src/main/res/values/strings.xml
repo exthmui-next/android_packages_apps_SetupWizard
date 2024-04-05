@@ -18,6 +18,8 @@
     <string name="access_desc_priv">Previous Settings page</string>
     <string name="access_desc_next">Next Settings page</string>
     <string name="access_desc_welcome">Welcome banner</string>
+    <string name="gms_package_name" translatable="false">com.google.android.gms</string>
+    <string name="google_settings_activity" translatable="false">com.google.android.gms.accountsettings.mg.ui.main.MainActivity</string>
 
     <!-- Data & SIM -->
     <string name="data_sim_title">Data &amp; SIM</string>
@@ -54,11 +56,10 @@
     <!-- Misc Settings -->
     <string name="misc_settings_title">Any other settings to operate? </string>
     <string name="screen_lock_title">Screen lock</string>
-    <string name="sound_title">Sound &amp; vibration</string>
-    <string name="multiuser_title">Multi-users</string>
-    <string name="display_title">Display settings</string>
-    <string name="multiuser_not_support">Cannot use multi-users</string>
-    <string name="multiuser_not_support_summary">Current System was disabled multi-users</string>
+    <string name="gms_not_support">Cannot open Google Play Service</string>
+    <string name="gms_not_support_summary">Google Play Service is missing on current system or unavailable now</string>
+    <string name="backup_restore">Backup &amp; Restore</string>
+    <string name="google_settings">Google Account</string>
 
     <!-- Finish setup -->
     <string name="finish_setup_title">Setup is complete! </string>
